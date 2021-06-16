@@ -1,0 +1,18 @@
+version: '3.6'
+services: 
+    dev:
+        restart: always
+        build:
+            context: .
+            target: development
+        volumes: 
+            - ".:/home/node/app"
+        ports: 
+            - "4200:4200"
+    prod:
+        restart: always
+        build:    
+            context: .
+        ports: 
+            - "80:80"
+
