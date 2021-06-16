@@ -1,0 +1,6 @@
+<h2>My Capsules</h2>
+<ul class="capsules">
+    <li *ngFor="let capsule of capsules" [class.selected]="capsule === selectedCapsule" (click)="onSelect(capsule)">
+        <span class="badge">{{capsule.capsule_serial}}</span> {{ capsule.type }}
+    </li>
+</ul>
