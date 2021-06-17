@@ -27,7 +27,18 @@ export class CapsulesComponent implements OnInit {
   }
 
   getAllCapsules(): void {
-    this.capsuleService.getAllCapsules().subscribe(capsules => this.capsules = capsules );				
+    this.capsuleService.getAllCapsules().subscribe(
+      (response: any) => {
+        this.capsules = response.sort((a: { original_launch: string | number | Date; }, b: { original_launch: string | number | Date; }) => {
+          return <any>new Date(b.original_launch) - <any>new Date(a.original_launch);
+        });
+        console.log(this.capsules);
+      },
+      (error: any) => {
+        console.log(error);
+      });	
+    console.log(this.capsules);
+
   }
 
 }
