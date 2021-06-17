@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Capsule } from '../../models/capsules.model';
 import { CapsulesService } from '../../services/capsules/capsules.service';
 
@@ -10,15 +10,26 @@ import { CapsulesService } from '../../services/capsules/capsules.service';
 export class CapsulesComponent implements OnInit {
 
   capsules: Capsule[] = [];
-	
+  @Input() capsule?: Capsule;
+
 	selectedCapsule?: Capsule;
   
+  public isCollapsed = false;
+
 
 	
   onSelect(capsule: Capsule): void {
 		this.selectedCapsule = capsule;
 	}
   
+  @Input() buttonText?: string;
+  isActive = false;
+
+  toggle() {
+    this.isActive = !this.isActive;
+  }
+  
+
   constructor(private capsuleService: CapsulesService) { }
 
   ngOnInit(): void {
