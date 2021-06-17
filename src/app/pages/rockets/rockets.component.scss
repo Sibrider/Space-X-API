@@ -19,3 +19,7 @@ ul li a {
 ul li a:hover{
     background: linear-gradient(90deg, rgba(75,77,82,1) 0%, rgba(35,42,54,1) 97%);
 }
+
+.__card__hover:hover {
+    box-shadow: 0.5px 0.5px 10px  #817c7c, -0.5px -0.5px 10px  #8b8383;
+}
