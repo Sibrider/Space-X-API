@@ -9,27 +9,42 @@
 
 
 
+
+
+
 <section class="wrapper">
     <div class="container">
         <div class="row">
             <div *ngIf="!capsules.length">
                 En cours de chargement...
             </div>
-            <div class="col-sm-4" *ngFor="let capsule of capsules" [class.selected]="capsule === selectedCapsule" (click)="onSelect(capsule)">
+            <div class="col-sm-4" *ngFor="let capsule of capsules">
                 <div class="card text-white card-has-bg click-col" style="background-image:url('https://www.evolution-x.fr/wp-content/uploads/2020/08/spacex-crew-dragon-1024x576.jpg');">
                     <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
                     <div class="card-img-overlay d-flex flex-column">
                         <div class="card-body">
-                            <small class="card-meta mb-2">{{capsule.capsule_id}}  
-                                (<span class="warning" id="messagebox" *ngIf="capsule.status==='retired'">
-                                    {{capsule.status}}</span>
-                                    <span class="success" id="messagebox" *ngIf="capsule.status==='active'">
-                                        {{capsule.status}}</span>
-                                        <span class="fail" id="messagebox" *ngIf="capsule.status==='destroyed'">
-                                            {{capsule.status}}</span>
-                                            <span class="unknown" id="messagebox" *ngIf="capsule.status==='unknown'">
-                                                {{capsule.status}}</span>
-                                                )
+
+                            <small class="card-meta mb-2"><h2>{{capsule.capsule_id}}</h2>
+                                <h6 *ngIf="capsule.status==='active'">
+                                    <span style="margin-left: 5px;" class="badge rounded-pill bg-success">
+                                        {{capsule.status}}
+                                    </span>
+                                </h6>  
+                                <h6 *ngIf="capsule.status==='destroyed'">
+                                    <span style="margin-left: 5px;" class="badge rounded-pill bg-danger">
+                                        {{capsule.status}}
+                                    </span>
+                                </h6> 
+                                <h6 *ngIf="capsule.status==='unknown'">
+                                    <span style="margin-left: 5px;" class="badge rounded-pill bg-gradient">
+                                        {{capsule.status}}
+                                    </span>
+                                </h6> 
+                                <h6 *ngIf="capsule.status==='retired'">
+                                    <span style="margin-left: 5px;" class="badge rounded-pill bg-info">
+                                        {{capsule.status}}
+                                    </span>
+                                </h6> 
                             </small>
 
                             <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{capsule.capsule_serial}}</a></h4>
@@ -44,15 +59,11 @@
                                 <div class="media">
                                     <div class="media-body">
                                         <h6 class="my-0 text-white d-block">{{capsule.type}}</h6>
-
                                         <small>{{capsule.details}}</small>
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                     <br> <br>
                 </div>
@@ -61,3 +72,5 @@
 
     </div>
 </section>
+
+<!-- <app-capsule-detail [capsule]="selectedCapsule"></app-capsule-detail> -->
