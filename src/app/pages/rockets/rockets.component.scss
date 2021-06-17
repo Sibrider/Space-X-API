@@ -1,0 +1,15 @@
+ul, ul li {
+    list-style-type: none;
+}
+ul li a {
+    background: linear-gradient(90deg, rgba(42,46,55,1) 0%, rgba(29,33,40,1) 97%);
+    transition: all ease-in-out 0.3s;
+    padding: 4px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
+
+ul li a:hover{
+    background: linear-gradient(90deg, rgba(75,77,82,1) 0%, rgba(35,42,54,1) 97%);
+}

@@ -1,0 +1,44 @@
+<div class="container-fluid" style="margin-top: 35px;">
+    <div class="row" p-4>
+        <div class="col-6" *ngFor="let launch of launches">
+            <article class="postcard dark red">
+                <a class="postcard__img_link" href="{{launch.links.article_link}}">
+                    <img class="postcard__img" src="{{launch.links.mission_patch}}" alt="Image Title" />	
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title red"><a href="{{launch.links.article_link}}">{{launch.mission_name}}</a></h1>
+                    <div class="postcard__subtitle small">
+                        <h6 *ngIf="!launch.launch_success">Flight number: {{launch.flight_number}}<span style="margin-left: 5px;" class="badge rounded-pill bg-success">Success</span></h6>
+                        <h6 *ngIf="launch.launch_success">Flight number: {{launch.flight_number}}<span style="margin-left: 5px;" class="badge rounded-pill bg-danger">Fail</span></h6>
+                    </div>                    
+                    <div class="postcard__subtitle small">
+                        <time>
+                            <fa-icon [icon]="faCalendar" style="margin-right: 5px;"></fa-icon>{{launch.launch_date_local | date : 'EEEE d MMMM y, h:mm'}}
+                        </time>
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">{{launch.details}}</div>
+                    <div class="postcard__subtitle">Details :</div>
+                    <div class="postcard__subtitle">
+                        <ul>
+                            <li>Launch Site : {{launch.launch_site.site_name}}</li>
+                            <li>Rocket name : {{launch.rocket.rocket_name}}</li>
+                            <li>Rocket type : {{launch.rocket.rocket_type}}</li>
+                        </ul>
+                    </div>
+                    <ul class="postcard__tagbox">
+                        <li class="tag__item">
+                            <a href="{{launch.links.article_link}}"><fa-icon [icon]="faArticle"style="margin-right: 5px;"></fa-icon>Article</a>
+                        </li>
+                        <li class="tag__item">
+                            <a href="{{launch.links.wikipedia}}"><fa-icon [icon]="faWikipedia" style="margin-right: 5px;"></fa-icon>Wikipedia</a>
+                        </li>
+                        <li class="tag__item play red">
+                            <a href="{{launch.links.video_link}}"><fa-icon [icon]="faYoutube" style="margin-right: 5px;"></fa-icon>Play Video</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>        
+    </div>
+</div>

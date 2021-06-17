@@ -37,4 +37,5 @@ export interface Rocket {
     second_stage: {engines: number, fuel_amount_tons: number, burn_time_sec: number, thrust: {kN: number, lbf: number}, payloads: Payload};
     engines: Engines;
     landing_legs: {number: number, material: string};
+    flickr_images: string;
 }

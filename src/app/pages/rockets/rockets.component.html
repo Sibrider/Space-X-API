@@ -1,1 +1,25 @@
-<p>rockets works!</p>
+<div class="container-fluid" style="margin-top: 35px;">
+    <div class="row" p-4>
+        <div *ngIf="!rockets.length">
+            En cours de chargement...
+        </div>
+        <div class="col-md-4" *ngFor="let rocket of rockets">
+            <div class="card">
+                <img [src]="rocket.flickr_images[0]" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ rocket.rocket_name }}
+                    </h5>
+                    <p class="card-text">
+                        {{ rocket.description }}
+                    </p>
+                </div>
+                <ul>
+                    <li>
+                        <a [href]="rocket.wikipedia"><fa-icon [icon]="faWikipedia"></fa-icon>  Wikipedia</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
