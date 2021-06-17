@@ -23,3 +23,7 @@ ul li a:hover{
 .__card__hover:hover {
     box-shadow: 0.5px 0.5px 10px  #817c7c, -0.5px -0.5px 10px  #8b8383;
 }
+
+.__card__hover:hover .img {
+    transform: scale(3);
+}
