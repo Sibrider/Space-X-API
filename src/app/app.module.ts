@@ -10,12 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LaunchesComponent } from './pages/launches/launches.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CapsulesComponent } from './pages/capsules/capsules.component';
+import { CapsulesService } from './services/capsules/capsules.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RocketsComponent,
-    LaunchesComponent
+    LaunchesComponent,
+    CapsulesComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgbModule
   ],
   providers: [
-    RocketsService
+    RocketsService,
+    CapsulesService
 
   ],
   bootstrap: [AppComponent]

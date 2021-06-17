@@ -1,0 +1,63 @@
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <h2>SPACEX CAPSULES</h2>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        Discover all the interesting details about capsules
+    </figcaption>
+</figure>
+
+
+
+<section class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div *ngIf="!capsules.length">
+                En cours de chargement...
+            </div>
+            <div class="col-sm-4" *ngFor="let capsule of capsules" [class.selected]="capsule === selectedCapsule" (click)="onSelect(capsule)">
+                <div class="card text-white card-has-bg click-col" style="background-image:url('https://www.evolution-x.fr/wp-content/uploads/2020/08/spacex-crew-dragon-1024x576.jpg');">
+                    <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                    <div class="card-img-overlay d-flex flex-column">
+                        <div class="card-body">
+                            <small class="card-meta mb-2">{{capsule.capsule_id}}  
+                                (<span class="warning" id="messagebox" *ngIf="capsule.status==='retired'">
+                                    {{capsule.status}}</span>
+                                    <span class="success" id="messagebox" *ngIf="capsule.status==='active'">
+                                        {{capsule.status}}</span>
+                                        <span class="fail" id="messagebox" *ngIf="capsule.status==='destroyed'">
+                                            {{capsule.status}}</span>
+                                            <span class="unknown" id="messagebox" *ngIf="capsule.status==='unknown'">
+                                                {{capsule.status}}</span>
+                                                )
+                            </small>
+
+                            <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{capsule.capsule_serial}}</a></h4>
+                            <small><i class="far fa-clock"></i> Original launch date :{{capsule.original_launch | date:' dd-MM-yyyy'}}</small>
+                        </div>
+                        <br><br>
+
+                        <div id="more">
+                            <p>More details about {{capsule.capsule_serial}} :</p>
+
+                            <div class="card-footer">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h6 class="my-0 text-white d-block">{{capsule.type}}</h6>
+
+                                        <small>{{capsule.details}}</small>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br> <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
