@@ -1,0 +1,61 @@
+
+
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding"> 
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Past Capsules</h4>
+                        <p class="card-description"> Lists capsules that have launched </p>
+                        <div class="table-responsive">
+                            
+                                <table class="table">
+                                    <thead class="thead-primary">
+                                        <tr>
+                                            <th scope="col">capsule_serial</th>
+                                            <th scope="col">capsule_id</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">type</th>
+                                            <th scope="col">details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="thead-primary" *ngFor="let cap of pastCapsules">
+                                        <tr>
+                                            <td>{{ cap.capsule_serial }}</td>
+                                            <td>{{ cap.capsule_id}}</td>
+                                            <td>
+                                                <span *ngIf="cap.status==='active'" style="margin-left: 5px;" class="badge rounded-pill bg-success">
+                                                    {{cap.status}}
+                                                </span>
+                                                
+                                                <span *ngIf="cap.status==='destroyed'" style="margin-left: 5px;" class="badge rounded-pill bg-danger">
+                                                    {{cap.status}}
+                                                </span>
+
+                                                <span *ngIf="cap.status==='unknown'" style="margin-left: 5px;" class="badge rounded-pill bg-gradient">
+                                                    {{cap.status}}
+                                                </span>
+
+
+                                                <span *ngIf="cap.status==='retired'" style="margin-left: 5px;" class="badge rounded-pill bg-info">
+                                                    {{cap.status}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {{cap.type}}
+                                            </td>
+                                            <td>
+                                                {{cap.details}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

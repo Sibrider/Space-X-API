@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Capsule } from '../../models/capsules.model';
 import { CapsulesService } from '../../services/capsules/capsules.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-capsules',
@@ -10,7 +12,6 @@ import { CapsulesService } from '../../services/capsules/capsules.service';
 export class CapsulesComponent implements OnInit {
 
   capsules: Capsule[] = [];
-  @Input() capsule?: Capsule;
 
 	selectedCapsule?: Capsule;
   
@@ -28,14 +29,34 @@ export class CapsulesComponent implements OnInit {
   toggle() {
     this.isActive = !this.isActive;
   }
+
+  public showUpcoming:boolean = false;
+  public showPast:boolean = false;
+
+  public buttonName:any = 'Upcoming Capsules';
+  public buttonName2:any = 'Past Capsules';
+
+
   
 
-  constructor(private capsuleService: CapsulesService) { }
+  constructor(private capsuleService: CapsulesService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCapsules();
-    console.log(this.capsules)
   }
+
+
+   
+ 
+  
+  upcomingCapsules() {
+    this.showUpcoming = !this.showUpcoming;
+  }
+
+  pastCapsules() {
+    this.showPast = !this.showPast;
+  }
+
 
   getAllCapsules(): void {
     this.capsuleService.getAllCapsules().subscribe(
@@ -51,5 +72,4 @@ export class CapsulesComponent implements OnInit {
     console.log(this.capsules);
 
   }
-
 }

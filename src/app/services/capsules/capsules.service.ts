@@ -11,11 +11,27 @@ import { environment } from 'src/environments/environment';
 export class CapsulesService {
 
   capsulesUrl = '/capsules';
+  upcomingUrl = '/upcoming';
+  pastUrl = '/past';
   constructor(private http: HttpClient) { }
 
 
   getAllCapsules(): Observable<Capsule[]> {
     return this.http.get<Capsule[]>(environment.baseUrl+this.capsulesUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  getUpcomingCapsules(): Observable<Capsule[]> {
+    return this.http.get<Capsule[]>(environment.baseUrl+this.capsulesUrl+this.upcomingUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  getPastCapsules(): Observable<Capsule[]> {
+    return this.http.get<Capsule[]>(environment.baseUrl+this.capsulesUrl+this.pastUrl).pipe(
       catchError(this.handleError)
     );
   }

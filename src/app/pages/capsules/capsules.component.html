@@ -5,11 +5,38 @@
     <figcaption class="blockquote-footer">
         Discover all the interesting details about capsules
     </figcaption>
+
+    <button (click)="upcomingCapsules()" type="button" class="btn btn-outline-info" id="bt">
+        {{buttonName}}
+    </button>
+    
+    
+    <button type="button" class="btn btn-outline-info" (click)="pastCapsules()" id="bt2">
+        {{buttonName2}}
+    </button>
+    
 </figure>
 
 
 
 
+
+<ng-container *ngIf="showUpcoming" >
+        <app-capsule-upcoming>
+        </app-capsule-upcoming>
+</ng-container>
+
+
+<ng-container *ngIf="showPast" >
+    <app-capsule-past>
+    </app-capsule-past>
+</ng-container>
+
+
+
+
+
+  
 
 
 <section class="wrapper">
@@ -18,10 +45,10 @@
             <div *ngIf="!capsules.length">
                 En cours de chargement...
             </div>
-            <div class="col-sm-4" *ngFor="let capsule of capsules">
+            <div class="col-sm-4" *ngFor="let capsule of capsules" >
                 <div class="card text-white card-has-bg click-col" style="background-image:url('https://www.evolution-x.fr/wp-content/uploads/2020/08/spacex-crew-dragon-1024x576.jpg');">
                     <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
-                    <div class="card-img-overlay d-flex flex-column">
+                    <div class="card-img-overlay d-flex flex-column"  >
                         <div class="card-body">
 
                             <small class="card-meta mb-2"><h2>{{capsule.capsule_id}}</h2>
@@ -53,6 +80,7 @@
                         <br><br>
 
                         <div id="more">
+                            
                             <p>More details about {{capsule.capsule_serial}} :</p>
 
                             <div class="card-footer">
@@ -60,6 +88,13 @@
                                     <div class="media-body">
                                         <h6 class="my-0 text-white d-block">{{capsule.type}}</h6>
                                         <small>{{capsule.details}}</small>
+                                        <br>
+                                        
+                                        <button type="button" class="btn btn-outline-secondary" placement="bottom" *ngFor="let mission of capsule.missions ; let i=index"   ngbTooltip="Mission : {{mission.name}} ,Flight : {{mission.flight}}"
+                                        tooltipClass="my-custom-class" >
+                                                Mission {{i+1}}
+                                      </button>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -73,4 +108,6 @@
     </div>
 </section>
 
-<!-- <app-capsule-detail [capsule]="selectedCapsule"></app-capsule-detail> -->
+
+
+<!-- <app-capsule-detail></app-capsule-detail> -->

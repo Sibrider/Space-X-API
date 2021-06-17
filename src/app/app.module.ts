@@ -12,13 +12,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CapsulesComponent } from './pages/capsules/capsules.component';
 import { CapsulesService } from './services/capsules/capsules.service';
+import { CapsuleUpcomingComponent } from './pages/capsule-upcoming/capsule-upcoming.component';
+import { CapsulePastComponent } from './pages/capsule-past/capsule-past.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RocketsComponent,
     LaunchesComponent,
-    CapsulesComponent
+    CapsulesComponent,
+    CapsuleUpcomingComponent,
+    CapsulePastComponent
   ],
   imports: [
     BrowserModule,
