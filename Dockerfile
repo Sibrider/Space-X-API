@@ -10,10 +10,11 @@ FROM angular as development
 CMD ["ng", "serve", "--host", "0.0.0.0"]
 
 FROM angular as builder
-RUN ng build --prod --output-path=dist
+RUN ng build --output-path=dist
 
 
-FROM nginx
+FROM nginx as production
 EXPOSE 80/tcp
-VOLUME [ "/usr/share/nginx/html" ]
+RUN mkdir -p /usr/share/nginx/html/assets
+COPY --from=angular /home/node/app/src/assets/* /usr/share/nginx/html/assets/
 COPY --from=builder /home/node/app/dist/* /usr/share/nginx/html/
