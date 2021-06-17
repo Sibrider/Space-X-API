@@ -23,6 +23,7 @@ export class RocketsComponent implements OnInit {
   constructor(private rocketService: RocketsService) { }
 
   ngOnInit(): void {
+    await this.getAll();
     setInterval(async () => {
       await this.getAll();
     }, 5000);
