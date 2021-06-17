@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CapsulesComponent } from './pages/capsules/capsules.component';
 import { CapsuleDetailComponent } from './pages/capsule-detail/capsule-detail.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

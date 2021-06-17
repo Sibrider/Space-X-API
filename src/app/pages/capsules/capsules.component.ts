@@ -12,8 +12,10 @@ export class CapsulesComponent implements OnInit {
   capsules: Capsule[] = [];
 	
 	selectedCapsule?: Capsule;
+  
+
 	
-	onSelect(capsule: Capsule): void {
+  onSelect(capsule: Capsule): void {
 		this.selectedCapsule = capsule;
 	}
   
@@ -21,13 +23,12 @@ export class CapsulesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCapsules();
+    console.log(this.capsules)
   }
 
-  getAllCapsules(): any {
-    this.capsuleService.getAllCapsules().subscribe((response: any) => {
-      console.log(response);
-    }, err => {
-      console.log(err);
-    })
+  getAllCapsules(): void {
+    this.capsuleService.getAllCapsules().subscribe(capsules => this.capsules = capsules );				
   }
+
+  
 }
