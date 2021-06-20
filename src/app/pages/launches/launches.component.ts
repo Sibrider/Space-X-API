@@ -29,9 +29,12 @@ export class LaunchesComponent implements OnInit {
     this.launchesService.getAll()
       .subscribe(
         (response: Launches[]) => {
-          this.launches = response.sort((a, b) => {
+          
+          this.launches = response; /*.sort((a, b) => {
             return <any>new Date(b.launch_date_local) - <any>new Date(a.launch_date_local);
           });
+          */
+        
           console.log(this.launches);
         },
         (error: any) => {
