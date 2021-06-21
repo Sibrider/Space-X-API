@@ -3,8 +3,10 @@ all: run
 run:
 	docker-compose up --build
 
-clear:
-	docker-compose stop
+clear: stop
 	docker-compose rm -f
+
+stop:
+	docker-compose stop
 
 re: clear all
